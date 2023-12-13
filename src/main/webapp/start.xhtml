@@ -12,10 +12,15 @@
     <h1>Докшина Алёна</h1>
     <h2>P3221, Вариант 2187</h2>
 
-    <h:outputText styleClass="date" value="Текущая дата: #{clockBean.currentDate}" />
-    <h:outputText styleClass="time" value="Текущее время: #{clockBean.currentTime}" />
+    <style>
+        *{
+            text-align: center;
+        }
+    </style>
+    <div id="clock"></div>
+
+
     <h:button value="На главную" styleClass="forward-button" outcome="go-to-main"/>
 
 </h:body>
-
 </html>

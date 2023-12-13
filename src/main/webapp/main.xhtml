@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
 
 <h:head>
     <title>Основная страница</title>
@@ -8,10 +10,20 @@
 
 <h:body>
     <h1>Основная страница</h1>
-
-    <h:form>
-        <h:commandLink action="index" value="Вернуться на стартовую страницу" />
-    </h:form>
+    <div class="button-container">
+    <table class="buttons">
+    <tr>
+    <th>
+        <h:button value="Назад" styleClass="return-button" outcome="go-to-start" id="go_to_start_button"/>
+    </th>
+    <th>
+        <h:commandButton class="return-button" id="clear" type="submit" value="Очистить таблицу">
+            <f:ajax listener="#{result.deleteResults}" render=":table"/>
+        </h:commandButton>
+    </th>
+    </tr>
+    </table>
+    </div>
 </h:body>
 
 </html>
