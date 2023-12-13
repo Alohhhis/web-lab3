@@ -1,0 +1,59 @@
+html, body {
+    font-family: 'Monospaced';
+    background-color: #1a1a1a;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#for-clock {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#clock {
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #333;
+    color: #ffcc00; /* Изменим цвет времени на жёлтый */
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px; /* Увеличим внешний отступ снизу */
+    border: 2px solid #00ff00; /* Добавим рамку */
+}
+
+h\:outputText.date,
+h\:outputText.time {
+    display: block;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 18px;
+    background-color: #333;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.forward-button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #007bff;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.forward-button:hover {
+    background-color: #0056b3;
+    color: #ffffff;
+}
