@@ -1,8 +1,10 @@
 package com.example.weblab3.bean;
 
 
+import com.example.weblab3.DB.MyDB;
+import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.faces.bean.ManagedBean;
+
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
@@ -20,10 +22,10 @@ public class MainBean implements Serializable {
     private String offset = "0";
     private List<Hit> list;
     @Inject
-    MyDAO manager;
-    public void add(Double x, Double y, Integer r, String offset){
+    MyDB manager;
+    public void add(Double x, Double y, Double r, String offset){
         setOffset(offset);
-        Hit hit = new ShootCreator().createHit(x,y,r);
+        Hit hit = new PointCreator().createHit(x,y,r);
         AreaChecker checker = new AreaChecker();
         checker.checkArea(hit);
         hit.setDate(ZonedDateTime.now(ZoneId.of("UTC")));
@@ -35,7 +37,7 @@ public class MainBean implements Serializable {
     }
 
     public void clearTable(){
-        manager.clear();
+       manager.clear();
     }
 
     public List<Hit> getList(){

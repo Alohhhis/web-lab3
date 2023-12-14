@@ -9,14 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="956b9abc-7f31-4c9f-b51e-343c89194da0" name="Changes" comment="main">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/AreaChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/MainBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/PointCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/UserBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/getOffset.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/Hit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/Hit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/main.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/main.xhtml" afterDir="false" />
+    <list default="true" id="956b9abc-7f31-4c9f-b51e-343c89194da0" name="Changes" comment="саша лох">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/DB/AbstractDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/DB/DB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/DB/MyDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/MainBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/MainBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jboss-web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jboss-web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +27,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="cdi.beans_3_0" />
       </list>
     </option>
   </component>
@@ -61,6 +63,9 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "xml.catalog",
     "vue.rearranger.settings.migration": "true"
   }
@@ -165,7 +170,7 @@
       <workItem from="1702037269187" duration="290000" />
       <workItem from="1702426590327" duration="3480000" />
       <workItem from="1702431080063" duration="15732000" />
-      <workItem from="1702510602491" duration="10610000" />
+      <workItem from="1702510602491" duration="15374000" />
     </task>
     <task id="LOCAL-00001" summary="ну и херня">
       <created>1702435939747</created>
@@ -195,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702569005330</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="саша лох">
+      <created>1702569933650</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1702569933650</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,7 +217,8 @@
     <MESSAGE value="ну и херня" />
     <MESSAGE value="." />
     <MESSAGE value="main" />
-    <option name="LAST_COMMIT_MESSAGE" value="main" />
+    <MESSAGE value="саша лох" />
+    <option name="LAST_COMMIT_MESSAGE" value="саша лох" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>
