@@ -51,7 +51,7 @@ public class Hit {
 ;
     }
 
-    public void setr(Double r) {
+    public void setR(Double r) {
         this.r
  = r
 ;

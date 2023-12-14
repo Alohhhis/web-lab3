@@ -8,6 +8,7 @@
 <h:head>
     <title>Основная страница</title>
     <script type="text/javascript" src="js/graphDrawer.js"/>
+    <script type="text/javascript" src="js/getOffset.js"/>
 </h:head>
 
 <h:body onload="drawGraph(1); getOffset();">
@@ -45,6 +46,65 @@
                     <p:ajax execute="@this" />
                 </p:spinner>
 
+                <div id="table">
+                    <table>
+                        <tr>
+                            <td colspan="3">
+                                <canvas id="canvas" width="400" height="400"/>
+                                <script type='text/javascript'>
+                                    canvas.addEventListener("click", function (event){
+                                        let x = event.offsetX;
+                                        let y = event.offsetY;
+                                        let r = document.getElementById("mainForm:beanRadius").value;
+                                        let offset = document.getElementById("date").value;
+                                        let rect = canvas.getBoundingClientRect();
+                                        let clientX = (event.clientX - rect.left - 200) / (side / 3) * k;
+                                        let clientY = ((-1) * (event.clientY - rect.top - 200)) / (side / 3) * k;
+                                        colorizeDot(ctx, clientX, clientY, r);
+                                        ctx.beginPath();
+                                        ctx.arc(x,y,4,0,Math.PI*2);
+                                        ctx.fill();
+                                        ctx.stroke();
+                                        ctx.closePath();
+
+                                        console.log("Coordinate x: " + clientX + " ",
+                                            "Coordinate y: "+ clientY + " r value = " + r);
+                                        check(clientX, clientY);
+
+                                        function colorizeDot(ctx,x, y, r){
+                                            if (x >= 0 &amp;&amp; y >= 0){
+                                                if (y &lt;= (-x + r/2)){
+                                                    ctx.fillStyle="red";
+                                                }
+                                                else ctx.fillStyle="white";
+                                            }
+                                            else if (x > 0 &amp;&amp; y &lt; 0){
+                                                if (Math.pow(x,2) + Math.pow(y,2) &lt;= Math.pow(r,2)){
+                                                    ctx.fillStyle="red";
+                                                }else ctx.fillStyle="white";
+                                            }
+                                            else if (x &lt; 0 &amp;&amp; y > 0){
+                                                if ((y &lt;= (r / 2)) &amp;&amp; (x >= -r)){
+                                                    ctx.fillStyle="red";
+                                                }else ctx.fillStyle="white";
+                                            }
+                                            else ctx.fillStyle="white";
+                                        }
+
+                                        function check(clientX, clientY){
+                                            document.getElementById("graphForm:hiddenX").value = clientX.toFixed(4);
+                                            document.getElementById("graphForm:hiddenY").value = clientY.toFixed(4);
+                                            document.getElementById("graphForm:hiddenR").value = document.getElementById("mainForm:beanRadius").value;
+                                            document.getElementById("graphForm:hiddenOffset").value = offset;
+                                            let btn = document.getElementById("graphForm:hidden-btn");
+                                            btn.click();
+                                        }
+                                    })
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
                 <h:commandButton value="Отправить">
                     <f:ajax execute="@form" render="result-table-body" listener="#{main.add(point.x, point.y, point.r, point.offset)}"/>
                 </h:commandButton>
