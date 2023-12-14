@@ -7,20 +7,16 @@
 
 <h:head>
     <title>Основная страница</title>
+    <script type="text/javascript" src="js/graphDrawer.js"/>
 </h:head>
 
-<h:body>
+<h:body onload="drawGraph(1); getOffset();">
     <h1>Основная страница</h1>
     <div class="button-container">
     <table class="buttons">
     <tr>
     <th>
         <h:button value="Назад" styleClass="return-button" outcome="go-to-start" id="go_to_start_button"/>
-    </th>
-    <th>
-        <h:commandButton class="return-button" id="clear" type="submit" value="Очистить таблицу">
-            <!--<f:ajax listener="#{result.deleteResults}" render=":table"/>-->
-        </h:commandButton>
     </th>
     </tr>
     </table>
@@ -29,11 +25,14 @@
         <h:form>
             <h:panelGrid columns="2">
                 <h:outputLabel for="x" value="Выберите X:" />
-                <p:spinner id="x" value="#{yourBean.x}" min="-3" max="3" />
+                <p:spinner id="x" value="#{point.x}" min="-3" max="3" >
+                <f:ajax execute="x"/>
+                </p:spinner>
 
                 <!--TODO styleclass-->
                 <h:outputLabel for="y" value="Выберите Y:" >
                     <h:inputText id="y" maxlength="5" value="#{point.y}" >
+                        <f:ajax execute="y"/>
                         <f:validateDoubleRange minimum="-5" maximum="3"/>
                         <p:message for="y"/>
                     </h:inputText>
@@ -42,15 +41,65 @@
 
 
                 <h:outputLabel for="r" value="Выберите R:" />
-                <p:spinner id="r" value="#{yourBean.r}" min="0.1" max="3" />
+                <p:spinner id="r" value="#{point.r}" min="0.1" max="3" stepFactor="0.1" onchange="redraw(parseFloat(this.value))">
+                    <p:ajax execute="@this" />
+                </p:spinner>
 
-                <!-- Кнопка "Очистить" -->
-                <p:commandButton value="Очистить" action="#{yourBean.clearForm}" update="@form" />
+                <h:commandButton value="Отправить">
+                    <f:ajax execute="@form" render="result-table-body" listener="#{main.add(point.x, point.y, point.r, point.offset)}"/>
+                </h:commandButton>
 
-                <!-- Кнопка "Отправить" -->
-                <p:commandButton value="Отправить" action="#{yourBean.submitForm}" update="@form" />
+                <h:commandButton type="reset" value="Сбросить"/>
+                <h:commandButton value="Очистить таблицу">
+                    <f:ajax render="result-table-body" listener="#{main.clearTable()}"/>
+                </h:commandButton>
             </h:panelGrid>
         </h:form>
+    </div>
+    <div id="data" class="frame" style="float:left; width: 50%; height: 550px; align-items: center;align-content: center; justify-content: center">
+        <h:dataTable var="hit" value="#{main.list}" id="result-table-body" style="color: white; width: 600px; margin: auto; text-align: center">
+            <h:column>
+                <f:facet name="header">X значение</f:facet>
+                #{hit.x}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Y значение</f:facet>
+                #{hit.y}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Радиус</f:facet>
+                #{hit.radius}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Попадание</f:facet>
+                #{hit.hitted}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Время скрипта</f:facet>
+                #{hit.time} мкс
+            </h:column>
+            <h:column>
+                <f:facet name="header">Время</f:facet>
+                #{hit.stringDate}
+            </h:column>
+
+        </h:dataTable>
+    </div>
+    <h:form id="graphForm">
+        <h:inputHidden id="hiddenX" value="#{point.x}"/>
+        <h:inputHidden id="hiddenY" value="#{point.y}"/>
+        <h:inputHidden id="hiddenR" value="#{point.r}"/>
+        <h:inputHidden id="hiddenOffset" value="#{point.offset}"/>
+        <h:commandButton style="display: none;" id="hidden-btn" action="#{main.add(point.x, point.y, point.r, point.offset)}">
+            <f:ajax execute="@form" render="result-table-body"/>
+        </h:commandButton>
+    </h:form>
+    <div id="divOffset">
+        <h:inputHidden id="date"/>
+    </div>
+    <div>
+        <h:messages id="Yerrors" style="width: 100%; color: red; margin-top: 10px"/>
+        <h:messages id="Xerrors" style="width: 100%; color: red; margin-top: 10px"/>
     </div>
 </h:body>
 

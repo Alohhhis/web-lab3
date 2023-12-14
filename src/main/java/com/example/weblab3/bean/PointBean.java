@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class PointBean implements Serializable {
     private Double x;
     private Double y;
-    private Double r;
+    private Double r = 1.0;
     private String offset;
 
     public Double getX() {
