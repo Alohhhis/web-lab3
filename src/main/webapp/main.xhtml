@@ -7,8 +7,7 @@
 
 <h:head>
     <title>Основная страница</title>
-    <script type="text/javascript" src="js/graphDrawer.js"/>
-    <script type="text/javascript" src="js/getOffset.js"/>
+
 </h:head>
 
 <h:body onload="drawGraph(1); getOffset();">
@@ -23,29 +22,35 @@
     </table>
     </div>
     <div id="inputForm">
-        <h:form>
+        <p:remoteCommand name="clickSender" action="#{result.addRowCanvas}" update=":resultTable"/>
+
+        <h:form id="valForm">
             <h:panelGrid columns="2">
+                <div id="x-container">
                 <h:outputLabel for="x" value="Выберите X:" />
-                <p:spinner id="x" value="#{point.x}" min="-3" max="3" >
-                <f:ajax execute="x"/>
+                <p:spinner id="x" value="#{xBean.value}" min="-3" max="3" required="true"
+                           styleClass="r-input">
+                <f:ajax execute="x" render=":msgPanel"/>
                 </p:spinner>
+                </div>
 
-                <!--TODO styleclass-->
-                <h:outputLabel for="y" value="Выберите Y:" >
-                    <h:inputText id="y" maxlength="5" value="#{point.y}" >
-                        <f:ajax execute="y"/>
+                <div id="y-container">
+                    <h:outputLabel for="y" value="Координата Y:">
+                    <h:inputText id="y" required="true" value="#{yBean.value}" maxlength="5"
+                                 styleClass="y-input" validator="#{yBean.validateY}">
+                        <f:ajax execute="y" render=":msgPanel"/>
                         <f:validateDoubleRange minimum="-5" maximum="3"/>
-                        <p:message for="y"/>
+                        <p:watermark for="y" value="Введите значение [-5;3]"/>
                     </h:inputText>
-                <p:watermark for="y" value="Введите значение [-5;3]"/>
-                </h:outputLabel>
+                    </h:outputLabel>
+                </div>
 
-
+                <div id="r-container" class="r-input">
                 <h:outputLabel for="r" value="Выберите R:" />
-                <p:spinner id="r" value="#{point.r}" min="0.1" max="3" stepFactor="0.1" onchange="redraw(parseFloat(this.value))">
+                <p:spinner id="r" value="#{rBean.value}" min="0.1" max="3" required="true" stepFactor="0.1" onchange="redraw(parseFloat(this.value))">
                     <p:ajax execute="@this" />
                 </p:spinner>
-
+                </div>
                 <div id="table">
                     <table>
                         <tr>
@@ -105,11 +110,12 @@
                         </tr>
                     </table>
                 </div>
-                <h:commandButton value="Отправить">
-                    <f:ajax execute="@form" render="result-table-body" listener="#{main.add(point.x, point.y, point.r, point.offset)}"/>
+
+                <h:commandButton value="Отправить" id="send">
+                    <f:ajax execute="@form" render="resultTable" listener="#{result.addRow(xBean.value, yBean.value, rBean.value)}"/>
                 </h:commandButton>
 
-                <h:commandButton type="reset" value="Сбросить"/>
+                <h:commandButton type="reset" value="Сбросить" onclick="resetForm()" styleClass="data-button"/>
                 <h:commandButton value="Очистить таблицу">
                     <f:ajax render="result-table-body" listener="#{main.clearTable()}"/>
                 </h:commandButton>
@@ -117,41 +123,44 @@
         </h:form>
     </div>
     <div id="data" class="frame" style="float:left; width: 50%; height: 550px; align-items: center;align-content: center; justify-content: center">
-        <h:dataTable var="hit" value="#{main.list}" id="result-table-body" style="color: white; width: 600px; margin: auto; text-align: center">
-            <h:column>
-                <f:facet name="header">X значение</f:facet>
-                #{hit.x}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Y значение</f:facet>
-                #{hit.y}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Радиус</f:facet>
-                #{hit.radius}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Попадание</f:facet>
-                #{hit.hitted}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Время скрипта</f:facet>
-                #{hit.time} мкс
-            </h:column>
-            <h:column>
-                <f:facet name="header">Время</f:facet>
-                #{hit.stringDate}
-            </h:column>
-
-        </h:dataTable>
+        <div class="table-block">
+            <h:outputText value="Результаты" styleClass="table-caption"/>
+            <h:dataTable id="resultTable" cellspacing="6" cellpadding="15" styleClass="result-table" value="#{result.results}" var="point" >
+                <p:remoteCommand name=""/>
+                <h:column>
+                    <f:facet name="header"> Координата X</f:facet>
+                    <h:outputText id="x1" value="#{point.x}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Координата Y</f:facet>
+                    <h:outputText id="y1" value="#{point.y}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Радиус R</f:facet>
+                    <h:outputText id="r1" value="#{point.r}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Факт попадания в область</f:facet>
+                    <h:outputText id="status" value="#{point.result}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Текущее время</f:facet>
+                    <h:outputText id="time" value="#{point.time}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Время работы (ms)</f:facet>
+                    <h:outputText id="script-time" value="#{point.scriptTime}"/>
+                </h:column>
+            </h:dataTable>
+        </div>
     </div>
     <h:form id="graphForm">
-        <h:inputHidden id="hiddenX" value="#{point.x}"/>
-        <h:inputHidden id="hiddenY" value="#{point.y}"/>
-        <h:inputHidden id="hiddenR" value="#{point.r}"/>
-        <h:inputHidden id="hiddenOffset" value="#{point.offset}"/>
-        <h:commandButton style="display: none;" id="hidden-btn" action="#{main.add(point.x, point.y, point.r, point.offset)}">
-            <f:ajax execute="@form" render="result-table-body"/>
+        <h:inputHidden id="hiddenX" value="#{xBean.value}"/>
+        <h:inputHidden id="hiddenY" value="#{yBean.value}"/>
+        <h:inputHidden id="hiddenR" value="#{rBean.value}"/>
+
+        <h:commandButton style="display: none;" id="hidden-btn" action="#{result.addRow(xBean.value, yBean.value, rBean.value)}">
+            <f:ajax execute="@form" render="resultTable"/>
         </h:commandButton>
     </h:form>
     <div id="divOffset">
@@ -162,5 +171,6 @@
         <h:messages id="Xerrors" style="width: 100%; color: red; margin-top: 10px"/>
     </div>
 </h:body>
-
+<h:outputScript name="js/ErrorAndReset.js"/>
+<h:outputScript name="js/graphDrawer.js"/>
 </html>

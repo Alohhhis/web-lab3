@@ -177,7 +177,7 @@ function drawGraph(r){
 
 function drawDots(ctx) {
 
-    let table = document.getElementById("result-table-body");
+    let table = document.getElementById("resultTable");
 
     for (let i = 1; i < table.rows.length; i++) {
         let tableX = table.rows[i].cells[0].innerText;

@@ -1,24 +1,19 @@
 package com.example.weblab3.bean;
 
+import static java.lang.Math.pow;
+
 public class AreaChecker {
-    public void checkArea(Hit hit){
-        try {
-            long start = System.nanoTime();
-            double x = hit.getX();
-            double y = hit.getY();
-            double r = hit.getR();
+    public static boolean isHit(float x, float y, float r) {
 
-            if (x >= 0 && y >= 0) {
-                hit.setHitted(y <= (-x + r / 2));
-            } else if (x > 0 && y < 0) {
-                hit.setHitted(Math.pow(x, 2) + Math.pow(y, 2) <= Math.pow(r, 2));
-            } else if (x < 0 && y > 0) {
-                hit.setHitted((y <= (r / 2)) && (x >= -r));
-            } else hit.setHitted(false);
-
-            hit.setTime((System.nanoTime() - start) / 1000);
-        }catch (NullPointerException e){
-            System.out.println("поля не заполнили");
-        }
+        return rectangle(x,y,r) || triangle(x,y,r)|| circle(x,y,r);
+    }
+    public static boolean rectangle(float x,float y,float r){
+        return  (x <= 0 && x >= -r && y <= 0 && y >= -r);
+    }
+    public static boolean triangle(float x,float y,float r){
+        return  (x >= 0 && x <= r/2 && y >= 0 && y <= r) ;
+    }
+    public static boolean circle(float x,float y,float r){
+        return  (x <= 0 && y >= 0 && pow(x, 2) + pow(y, 2) <= pow(r, 2));
     }
 }
