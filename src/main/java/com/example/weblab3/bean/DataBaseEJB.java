@@ -93,7 +93,7 @@ public class DataBaseEJB {
         return query.getResultList();
     }
     public void deleteAll() {
-        Query query = entityManager.createQuery("DELETE FROM DataBase");
+        Query query = entityManager.createQuery("DELETE  FROM DataBase");
         query.executeUpdate();
     }
     public void sendAllJson(){

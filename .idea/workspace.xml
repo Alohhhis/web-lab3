@@ -9,24 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="956b9abc-7f31-4c9f-b51e-343c89194da0" name="Changes" comment="menya vsё zaebalo">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/DB/DataBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/DataBaseEJB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/RBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/XBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/YBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/ErrorAndReset.js" afterDir="false" />
+    <list default="true" id="956b9abc-7f31-4c9f-b51e-343c89194da0" name="Changes" comment="На случай если нет">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/AreaChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/AreaChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/PointBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/PointBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/clock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/clock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/getOffset.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/getOffset.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/graphDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/graphDrawer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/main.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/main.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/styles/start.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/styles/start.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/weblab3/DB/AbstractDB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/weblab3/DB/DB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/weblab3/DB/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/DB/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/weblab3/DB/MyDB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/DataBaseEJB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/DataBaseEJB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/Hit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/MainBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/PointBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/PointCreator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/weblab3/bean/UserBean.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +71,14 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "service.view.auto.scroll.to.source": "true",
     "settings.editor.selected.configurable": "xml.catalog",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -157,20 +158,6 @@
         </option>
       </method>
     </configuration>
-    <configuration default="true" type="JBossConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings>
-        <option name="SERVER" value="" />
-        <option name="BINDING_SET_NAME" value="" />
-        <option name="DOMAIN" value="false" />
-        <option name="SERVER_GROUP" value="" />
-        <option name="USERNAME" value="" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="JBoss" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -185,7 +172,8 @@
       <workItem from="1702037269187" duration="290000" />
       <workItem from="1702426590327" duration="3480000" />
       <workItem from="1702431080063" duration="15732000" />
-      <workItem from="1702510602491" duration="32637000" />
+      <workItem from="1702510602491" duration="36368000" />
+      <workItem from="1702686592596" duration="8133000" />
     </task>
     <task id="LOCAL-00001" summary="ну и херня">
       <created>1702435939747</created>
@@ -229,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702592220895</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="На случай если нет">
+      <created>1702681010034</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1702681010034</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +236,8 @@
     <MESSAGE value="main" />
     <MESSAGE value="саша лох" />
     <MESSAGE value="menya vsё zaebalo" />
-    <option name="LAST_COMMIT_MESSAGE" value="menya vsё zaebalo" />
+    <MESSAGE value="На случай если нет" />
+    <option name="LAST_COMMIT_MESSAGE" value="На случай если нет" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>
