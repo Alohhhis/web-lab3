@@ -1,60 +1,47 @@
-html, body {
-    font-family: 'Monospaced';
-    background-color: #1a1a1a;
-    color: #ffffff;
+/* styles/start.css */
+
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
 }
 
-h1, h2 {
-    text-align: center;
-    margin-bottom: 20px;
+h1 {
+    color: #333;
 }
 
-#for-clock {
-    text-align: center;
-    margin-bottom: 30px;
+h2 {
+    color: #555;
 }
 
 #clock {
     font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    background-color: #333;
-    color: #ffcc00; /* Изменим цвет времени на жёлтый */
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 20px; /* Увеличим внешний отступ снизу */
-    border: 2px solid #00ff00; /* Добавим рамку */
-}
-
-h\:outputText.date,
-h\:outputText.time {
-    display: block;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 18px;
-    background-color: #333;
-    color: #ffffff;
-    border-radius: 10px;
-    padding: 15px;
+    color: #007bff;
+    margin-bottom: 20px;
 }
 
 .forward-button {
-    display: flex;
-    margin: 20px;
+    background-color: #28a745;
+    color: #fff;
     padding: 10px 20px;
-    font-size: 16px;
-    text-align: center;
     text-decoration: none;
-    color: #ffffff;
-    background-color: #007bff;
-    border: 2px solid #007bff;
-    border-radius: 10px;
-    transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 20px;
 }
 
 .forward-button:hover {
-    background-color: #0056b3;
-    color: #ffffff;
+    background-color: #218838;
 }
+
+/* Optional: Add some spacing and center the content */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+

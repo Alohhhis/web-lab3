@@ -17,31 +17,30 @@ function drawGraph(r){
     ctx.fillStyle = "#00b4d8";
     //график 1 четверть
 
-    ctx.beginPath();
-    ctx.moveTo(centerX, centerY);
-    ctx.lineTo(centerX, centerY - side/6 * (r/k));
-    ctx.lineTo(centerX + side/6 * (r/k), centerY);
-    ctx.fill();
-    ctx.closePath();
 
 
     //график 2 четверть
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
     ctx.lineTo(centerX - side/3 * (r/k) , centerY);
-    ctx.lineTo(centerX - side/3 * (r/k) , centerY - side/6 * (r/k));
-    ctx.lineTo(centerX,centerY - side/6 * (r/k));
+    ctx.lineTo(centerX - side/3 * (r/k) , centerY - side/3 * (r/k));
+    ctx.lineTo(centerX,centerY - side/3 * (r/k));
     ctx.fill();
     ctx.closePath();
 
     //график 3 четверть пустой
-
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.lineTo(centerX, centerY + side/6 * (r/k));
+    ctx.lineTo(centerX - side/6 * (r/k), centerY);
+    ctx.fill();
+    ctx.closePath();
 
     //график 4 четверть
     ctx.beginPath();
     const radius = side / 3 * (r/k);
     const startAngle = 0;
-    const endAngle = Math.PI * 0.5;
+    const endAngle = Math.PI /2;
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
     ctx.arc(centerX, centerY, radius, startAngle, endAngle, false);

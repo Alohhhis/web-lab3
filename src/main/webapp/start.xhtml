@@ -4,8 +4,8 @@
 
 <h:head>
     <title>Стартовая страница</title>
-    <link rel="stylesheet" type="text/css" href="styles/start.css" />
-    <script type="text/javascript" src="js/clock.js"></script>
+    <h:outputStylesheet name="styles/start.css"/>
+
 </h:head>
 
 <h:body>
@@ -23,4 +23,5 @@
     <h:button value="На главную" styleClass="forward-button" outcome="go-to-main"/>
 
 </h:body>
+<h:outputScript name="js/clock.js"/>
 </html>
